@@ -11,9 +11,9 @@ const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
-app.get('/glossory', controller.glossary.get)
+app.get('/glossary', controller.glossary.get)
 
-app.post('/glossory', controller.glossary.post)
+app.post('/glossary', controller.glossary.post)
 
 /****
  *

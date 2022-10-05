@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-mongoose.connect('mongodb://localhost:3000/glossary');
+mongoose.connect('mongodb://localhost:27017/glossary');
 
 const glossarySchema = new Schema({
   _id: Number,
-  word: String,
+  word: {type: String, unique: true},
   definition: String
 });
 
@@ -15,3 +15,4 @@ const Glossary = mongoose.model('Glossary', glossarySchema);
 // 2. Set up any schema and models needed by the app
 // 3. Export the models
 // 4. Import the models into any modules that need them
+module.exports.glossaries = Glossary;
