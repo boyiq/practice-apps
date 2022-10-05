@@ -3,13 +3,23 @@ const db = require('../db.js');
 
 
 module.exports = {
-  save: function(data) {
-    console.log('data passed into models is ', data);
-    console.log('the collection is ', db.glossaries);
+  getAll: function(callback) {
+    db.glossaries.find({})
+    .then((data)=> {
+      console.log('data got from DB queryfind is ', data)
+      callback(null, data)
+    }).catch((err)=> {
+      callback(err, null)
+    })
+  },
+
+  save: function(data, callback) {
+    //console.log('data passed into models is ', data);
+
     db.glossaries.collection.insertOne(data)
     .then(()=> {
       console.log('data saved')})
     .catch((err)=>{
-      console.log('err')})
+      callback(err)})
   }
 }
