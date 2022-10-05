@@ -1,0 +1,1 @@
+module.exports.glossary = require('./glossary.js');
