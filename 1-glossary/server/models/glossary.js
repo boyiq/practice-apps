@@ -15,11 +15,19 @@ module.exports = {
 
   save: function(data, callback) {
     //console.log('data passed into models is ', data);
-
     db.glossaries.collection.insertOne(data)
     .then(()=> {
-      console.log('data saved')})
+      callback(null)})
     .catch((err)=>{
       callback(err)})
+  },
+
+  remove: function(glossary, callback) {
+    db.glossaries.collection.deleteOne({word: glossary.word})
+    .then(()=>{
+      callback(null)
+    }).catch((err)=> {
+      callback(err);
+    })
   }
 }

@@ -1,5 +1,5 @@
 const models = require('../models');
-console.log('save function is ', models.glossary.save)
+//console.log('save function is ', models.glossary.save)
 
 module.exports = {
   get: function(req,res) {
@@ -24,6 +24,12 @@ module.exports = {
   },
 
   delete: function(req, res) {
-
+    models.glossary.remove(req.body, (err)=> {
+      if (err) {
+        res.sendStatus(400);
+      } else {
+        res.status(201).json('glossary deleted');
+      }
+    })
   }
 }
