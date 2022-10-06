@@ -4,7 +4,7 @@ import App from './components/App.jsx'
 
 render(
   <div>
-    <p>Word Glossories</p>
+    <b>Glossary</b>
     <App />
   </div>,
   document.getElementById("root")

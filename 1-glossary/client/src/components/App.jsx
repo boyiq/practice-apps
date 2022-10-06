@@ -7,6 +7,7 @@ import Search from './Search.jsx'
 const App = () => {
 
   const [allGlossaries, setAllGlossaries] = useState([]);
+  const [searchStatus, setSearchStatus] = useState('');
 
   useEffect(()=>{
     axios.get('/glossary')
@@ -28,7 +29,10 @@ const App = () => {
     })
   }
 
-  const search = function() {}
+  const search = function(entry) {
+    console.log('the searched word passed in search is ', entry)
+    setSearchStatus(entry);
+  }
 
   const removeGlossary = function(glossary) {
     axios.delete('/glossary', {data: glossary})
@@ -48,7 +52,7 @@ const App = () => {
       <p>this is app</p>
       <Search handleSearch={ search } />
       <Add handleSubmit={ addGlossary }/>
-      <GlossaryList allGlossaries={ allGlossaries } remove={ removeGlossary }/>
+      <GlossaryList allGlossaries={ allGlossaries } remove={ removeGlossary } searchStatus = {searchStatus}/>
     </div>
   )
 }
