@@ -3,33 +3,41 @@ const models = require('../models');
 
 module.exports = {
   get: function(req,res) {
-    models.glossary.getAll((err, data)=> {
-      if (err) {
-        res.sendStatus(400);
-      } else {
-        console.log('data passed back to the respond is ', data)
-        res.status(200).json(data)
-      }
-    });
+    models.glossary.getAll()
+    .then((data)=> {
+      res.status(200).json(data)
+    }).catch((err)=> {
+      res.sendStatus(400)
+    })
   },
 
   post: function(req, res) {
-    models.glossary.save(req.body, (err)=> {
-      if (err) {
-        res.sendStatus(400);
-      } else {
-        res.status(201).json('post successful');
-      }
-    });
+    models.glossary.save(req.body)
+    .then(()=> {
+      res.status(200).json('new glossary added')
+    }).catch((err)=>{
+      res.sendStatus(400);
+    })
+
   },
 
   delete: function(req, res) {
-    models.glossary.remove(req.body, (err)=> {
-      if (err) {
-        res.sendStatus(400);
-      } else {
-        res.status(201).json('glossary deleted');
-      }
+    models.glossary.remove(req.body)
+    .then(()=>{
+      res.status(201).json('glossary deleted')
+    }).catch((err)=> {
+      res.sendStatus(400);
     })
+
+  },
+
+  put: function(req, res) {
+    models.glossary.update(req.body)
+    .then((data)=> {
+      res.status(200).json(data.value)
+    }).catch((err)=>{
+      res.sendStatus(400);
+    })
+
   }
 }

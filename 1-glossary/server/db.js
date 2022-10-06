@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-mongoose.connect('mongodb://localhost:27017/glossary');
+mongoose.connect('mongodb://localhost:27017/wordglossary');
 
 const glossarySchema = new Schema({
-  _id: Number,
   word: {type: String, unique: true},
-  definition: String
+  definition: String,
 });
 
 const Glossary = mongoose.model('Glossary', glossarySchema);

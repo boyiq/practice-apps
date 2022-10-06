@@ -14,6 +14,7 @@ app.use(express.json());
 app.get('/glossary', controller.glossary.get)
 app.post('/glossary', controller.glossary.post)
 app.delete('/glossary', controller.glossary.delete)
+app.put('/glossary', controller.glossary.put)
 
 /****
  *
