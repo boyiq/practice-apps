@@ -15,16 +15,16 @@ module.exports = {
     })
   },
 
-  remove: function(glossary) {
+  remove: function(glossary, callback) {
     return db.glossaries.collection.deleteOne({word: glossary.word})
   },
 
-  update: function(updatedGlossary) {
-    console.log('the passed in updatedGLossary is ', updatedGlossary)
+  update: function(updatedGlossary,callback) {
+    //console.log('the passed in updatedGLossary is ', updatedGlossary)
     return db.glossaries.collection.findOneAndUpdate({word: updatedGlossary.word}, {$set: {
       word:updatedGlossary.word,
       definition: updatedGlossary.definition
-    }}, {upsert: true})
+    }},  {new: true, upsert: true})
 
     //db.glossaries.collection.findOne({word: updatedGlossary.word})
     //.then((targetGlossary)=> {

@@ -32,12 +32,23 @@ module.exports = {
   },
 
   put: function(req, res) {
-    models.glossary.update(req.body)
+    console.log('the put request body updated glossry is ', req.body.data)
+
+    models.glossary.update(req.body.data)
     .then((data)=> {
-      res.status(200).json(data.value)
+      console.log('put request successful')
+      res.status(200).json(req.body.data)
     }).catch((err)=>{
       res.sendStatus(400);
     })
 
+
+    //models.glossary.update(req.body.data, function (err, data) {
+    //  if (err) {
+    //    res.sendStatus(400);
+    //  } else {
+    //    res.status(200).json(req.body.data)
+    //  }
+    //})
   }
 }

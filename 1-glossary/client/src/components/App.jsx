@@ -30,7 +30,6 @@ const App = () => {
   }
 
   const search = function(entry) {
-    console.log('the searched word passed in search is ', entry)
     setSearchStatus(entry);
   }
 
@@ -38,10 +37,23 @@ const App = () => {
     axios.delete('/glossary', {data: glossary})
     .then(()=>{
       let copy = [...allGlossaries];
-      //console.log('the index of glossary to be removed is ', copy.indexOf(glossary))
       copy.splice(copy.indexOf(glossary), 1)
       setAllGlossaries(copy)
     }).catch((err)=>{
+      console.log(err);
+    })
+  }
+
+  const editGlossary = function(glossary) {
+    var copy = [...allGlossaries];
+    var index = copy.indexOf(glossary)
+    console.log('the updated glossary is ', glossary)
+    axios.put('/glossary', {data:glossary})
+    .then((updatedGlossary)=>{
+      console.log('the updated glossary after put request is', updatedGlossary.data)
+      copy.splice(index, 1, updatedGlossary.data)
+      setAllGlossaries(copy)
+    }).catch((err)=> {
       console.log(err);
     })
   }
@@ -52,7 +64,7 @@ const App = () => {
       <p>this is app</p>
       <Search handleSearch={ search } />
       <Add handleSubmit={ addGlossary }/>
-      <GlossaryList allGlossaries={ allGlossaries } remove={ removeGlossary } searchStatus = {searchStatus}/>
+      <GlossaryList allGlossaries={ allGlossaries } remove={ removeGlossary } searchStatus = {searchStatus} editGlossary={editGlossary}/>
     </div>
   )
 }
