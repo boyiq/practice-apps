@@ -12,7 +12,6 @@ const App = () => {
   useEffect(()=>{
     axios.get('/glossary')
     .then((response)=>{
-      console.log("the response from useEffect get request is ", response.data)
       setAllGlossaries(response.data);
     }).catch((err)=> {
       console.log(err);
@@ -47,10 +46,8 @@ const App = () => {
   const editGlossary = function(glossary) {
     var copy = [...allGlossaries];
     var index = copy.indexOf(glossary)
-    console.log('the updated glossary is ', glossary)
-    axios.put('/glossary', {data:glossary})
+    axios.put('/glossary', glossary)
     .then((updatedGlossary)=>{
-      console.log('the updated glossary after put request is', updatedGlossary.data)
       copy.splice(index, 1, updatedGlossary.data)
       setAllGlossaries(copy)
     }).catch((err)=> {

@@ -22,6 +22,7 @@ module.exports = {
   },
 
   delete: function(req, res) {
+    console.log('the delete request body is ', req.body)
     models.glossary.remove(req.body)
     .then(()=>{
       res.status(201).json('glossary deleted')
@@ -32,12 +33,12 @@ module.exports = {
   },
 
   put: function(req, res) {
-    console.log('the put request body updated glossry is ', req.body.data)
+    console.log('the put request body updated glossry is ', req.body)
 
-    models.glossary.update(req.body.data)
+    models.glossary.update(req.body)
     .then((data)=> {
       console.log('put request successful')
-      res.status(200).json(req.body.data)
+      res.status(200).json(req.body)
     }).catch((err)=>{
       res.sendStatus(400);
     })
