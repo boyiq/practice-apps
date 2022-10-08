@@ -21,8 +21,8 @@ const App = ()=> {
   const [user, setUser] = useState(initialValues);
 
   const updateInfo = function(name, newValue) {
-    console.log('the passed in name is ', name)
-    console.log('the passed in newValue is ', newValue)
+    //console.log('the passed in name is ', name)
+    //console.log('the passed in newValue is ', newValue)
     setUser({...user, [name]: newValue})
   }
 
@@ -31,8 +31,9 @@ const App = ()=> {
     setPage(page + 1)
   }
 
-  const clickSubmit = function() {
-    axios.post()
+  const clickSubmit = function(user) {
+    console.log('the user about to submit is ', user)
+    //axios.post('/checkout', user)
   }
 
 
@@ -50,7 +51,7 @@ const App = ()=> {
     return (
     <div>
       <p>this is app</p>
-      <Form page={page} handleSubmit={clickNext} user={user} updateInfo={updateInfo}/>
+      <Form page={page} handleSubmit={clickNext} user={user} updateInfo={updateInfo} clickSubmit={clickSubmit}/>
     </div>
     )
   }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 
-const Form = ({page, handleSubmit, user, updateInfo})=> {
+const Form = ({page, handleSubmit, user, updateInfo, clickSubmit})=> {
 
   const handleInputChange = function(event) {
     let name = event.target.name;
@@ -70,6 +70,10 @@ const Form = ({page, handleSubmit, user, updateInfo})=> {
     return (
       <div>
         <p>All info</p>
+        <button onClick={(event)=> {
+          clickSubmit(user)
+
+        }}>Submit</button>
       </div>
     )
   }
