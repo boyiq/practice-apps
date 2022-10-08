@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Form from './Form.jsx';
+import axios from 'axios'
 
 
 
@@ -33,7 +34,9 @@ const App = ()=> {
 
   const clickSubmit = function(user) {
     console.log('the user about to submit is ', user)
-    //axios.post('/checkout', user)
+    axios.post('/checkout', user)
+    setHome(true)
+    setUser(initialValues);
   }
 
 

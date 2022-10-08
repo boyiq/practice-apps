@@ -69,10 +69,15 @@ const Form = ({page, handleSubmit, user, updateInfo, clickSubmit})=> {
   } else if (page === 4) {
     return (
       <div>
-        <p>All info</p>
+        <p><b>Username</b>{user.username}</p>
+        <p><b>Email</b>{user.email}</p>
+        <p><b>Mailing Address</b>{user.mail_address}</p>
+        <p><b>Card Number</b>{user.card_number}</p>
+        <p><b>Expiration Date</b>{user.expDate}</p>
+        <p><b>CVV</b>{user.cvv}</p>
+        <p><b>Billing zipcode</b>{user.bill_zip}</p>
         <button onClick={(event)=> {
           clickSubmit(user)
-
         }}>Submit</button>
       </div>
     )
