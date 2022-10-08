@@ -5,7 +5,7 @@ import Form from './Form.jsx';
 
 const App = ()=> {
   const [home, setHome] = useState(true);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
 
   const initialValues = {
     username: '',
@@ -26,22 +26,34 @@ const App = ()=> {
     setUser({...user, [name]: newValue})
   }
 
+
   const clickNext = function() {
-    //temporarily save data before submission
-    //change page state
     setPage(page + 1)
   }
 
+  const clickSubmit = function() {
+    axios.post()
+  }
 
 
-
-  return (
+  if (home) {
+    return(
+      <div>
+        <p>this is app</p>
+        <button onClick={(event)=>{
+          setHome(false);
+          setPage(1)
+        }}>checkout</button>
+      </div>
+    )
+  } else {
+    return (
     <div>
       <p>this is app</p>
-      <button style={{visibility: home? 'visible' : 'hidden'}}>checkout</button>
       <Form page={page} handleSubmit={clickNext} user={user} updateInfo={updateInfo}/>
     </div>
-  )
+    )
+  }
 }
 
 export default App

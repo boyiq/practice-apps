@@ -19,13 +19,13 @@ const Form = ({page, handleSubmit, user, updateInfo})=> {
       }}>
         <input type="text" placeholder="enter username" name ="username" value={user.username} onChange={(event)=>{
           handleInputChange(event)
-        }}></input>
+        }} />
         <input type="text" placeholder="enter password" name ="passkey" value={user.passkey} onChange={(event)=>{
           handleInputChange(event)
-        }}></input>
+        }} />
         <input type="text" placeholder="enter email" name ="email" value={user.email} onChange={(event)=>{
           handleInputChange(event)
-        }}></input>
+        }} />
         <button>Next</button>
       </form>
     )
@@ -35,11 +35,13 @@ const Form = ({page, handleSubmit, user, updateInfo})=> {
         event.preventDefault();
         handleSubmit();
       }}>
-        <input type="text" placeholder="Line 1"></input>
-        <input type="text" placeholder="Line 2"></input>
-        <input type="text" placeholder="City"></input>
-        <input type="text" placeholder="State"></input>
-        <input type="text" placeholder="Zip Code"></input>
+        <input type="text" placeholder="Line 1" name = "mail_address" value={user.mail_address} onChange={(event)=>{
+          handleInputChange(event)
+        }} />
+        <input type="text" placeholder="Line 2" />
+        <input type="text" placeholder="City" />
+        <input type="text" placeholder="State"/>
+        <input type="text" placeholder="Zip Code" />
         <button>Next</button>
       </form>
     )
@@ -49,10 +51,18 @@ const Form = ({page, handleSubmit, user, updateInfo})=> {
         event.preventDefault();
         handleSubmit();
       }}>
-        <input type="text" placeholder="Card Number" name ="card_number" value={user.card_number}></input>
-        <input type="text" placeholder="Expiration Date" name ="expDate" value={user.expDate}></input>
-        <input type="text" placeholder="CVV" name ="CVV" value={user.cvv}></input>
-        <input type="text" placeholder="Billing Zip Code" name ="bill_zip" value={user.bill_zip}> </input>
+        <input type="text" placeholder="Card Number" name ="card_number" value={user.card_number} onChange={(event)=>{
+          handleInputChange(event)
+        }} />
+        <input type="text" placeholder="Expiration Date" name ="expDate" value={user.expDate} onChange={(event)=>{
+          handleInputChange(event)
+        }} />
+        <input type="text" placeholder="CVV" name ="cvv" value={user.cvv} onChange={(event)=>{
+          handleInputChange(event)
+        }} />
+        <input type="text" placeholder="Billing Zip Code" name ="bill_zip" value={user.bill_zip} onChange={(event)=>{
+          handleInputChange(event)
+        }} />
         <button>Next</button>
       </form>
     )
