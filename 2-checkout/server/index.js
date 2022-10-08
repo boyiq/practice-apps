@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
  */
 app.use(express.json());
+
 app.get('/checkout', controller.get)
 app.post('/checkout', controller.post)
 

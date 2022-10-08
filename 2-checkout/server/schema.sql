@@ -11,7 +11,7 @@ CREATE TABLE users(
   phone TEXT,
   card_number TEXT,
   expDate DATE,
-  CVV TEXT,
+  cvv TEXT,
   bill_zip TEXT,
   CONSTRAINT uc_user UNIQUE (username, email)
 );
