@@ -1,16 +1,18 @@
-CREATE DATABASE checkoutusers;
+CREATE DATABASE checkout;
 
-USE checkoutusers
+USE checkout;
 
 CREATE TABLE users(
   id INT AUTO_INCREMENT PRIMARY KEY,
-  username TEXT,
-  email TEXT,
+  username varchar(255),
+  email varchar(255),
   passkey TEXT,
   mail_address TEXT,
   phone TEXT,
   card_number TEXT,
   expDate DATE,
   CVV TEXT,
-  bill_zip TEXT
+  bill_zip TEXT,
+  CONSTRAINT uc_user UNIQUE (username, email)
 );
+
